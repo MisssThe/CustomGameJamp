@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class VoiceManager
 {
-    public void UpdateVoice(Vector2Int point)
+    public static void UpdateVoice(Vector2Int point)
     {
         
     }

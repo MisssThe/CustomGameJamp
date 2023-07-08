@@ -6,29 +6,26 @@ using UnityEngine;
 public class FastWayCreator
 {
 
-    private Vector2Int _size;
-    private MapDataCreator.FastWayItem[][] _fastWayItems;
-    public void Generate(Vector2Int begin, Vector2Int end, MapDataCreator.FastWayItem[][] fastWayItems)
+    private static Vector2Int _size;
+    public static void Generate(Vector2Int begin, Vector2Int end)
     {
         //从终点往外遍历
-        if (fastWayItems == null || fastWayItems.Length < 1)
+        if (MapDataCreator.FastWayItems == null || MapDataCreator.FastWayItems.Length < 1)
         {
             return;
         }
-        this._fastWayItems = fastWayItems;
-        this._size = new Vector2Int(this._fastWayItems.Length, this._fastWayItems[0].Length);
-        this._fastWayItems[end.x][end.y].MinCount = 1;
-        this.UpdateWay(end);
-        this._fastWayItems = null;
+        _size = new Vector2Int(MapDataCreator.FastWayItems.Length, MapDataCreator.FastWayItems[0].Length);
+        MapDataCreator.FastWayItems[end.x][end.y].MinCount = 1;
+        UpdateWay(end);
     }
 
-    private void UpdateWay(Vector2Int point)
+    private static void UpdateWay(Vector2Int point)
     {
-        if (this._fastWayItems[point.x][point.y].Item != MapDataCreator.Item.Road)
+        if (MapDataCreator.FastWayItems[point.x][point.y].Item != MapDataCreator.Item.Road)
         {
             return;
         }
-        int distance = this._fastWayItems[point.x][point.y].MinCount;
+        int distance = MapDataCreator.FastWayItems[point.x][point.y].MinCount;
 
         distance++;
         //判断周围路径是否可达
@@ -42,20 +39,20 @@ public class FastWayCreator
         RealUpdateWay(right, distance);
     }
 
-    private void RealUpdateWay(Vector2Int point,int distance)
+    private static void RealUpdateWay(Vector2Int point,int distance)
     {
         if (IsSafeIndex(point))
         {
-            int minCount = this._fastWayItems[point.x][point.y].MinCount;
+            int minCount = MapDataCreator.FastWayItems[point.x][point.y].MinCount;
             if (minCount > 0 && minCount <= distance)
             {
                 return;
             }
-            this._fastWayItems[point.x][point.y].MinCount = distance;
+            MapDataCreator.FastWayItems[point.x][point.y].MinCount = distance;
             UpdateWay(point);
         }
     }
-    private bool IsSafeIndex(Vector2Int point)
+    private static bool IsSafeIndex(Vector2Int point)
     {
         if (point.x < _size.x && point.y < _size.y && point.x >= 0 && point.y >= 0)
         {

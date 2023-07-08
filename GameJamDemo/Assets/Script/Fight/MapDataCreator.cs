@@ -16,6 +16,7 @@ public class MapDataCreator
         public int MinCount;    //离终点最短距离
         public MapDataCreator.Item Item;
     }
+    public static FastWayItem[][] FastWayItems;
     // Start is called before the first frame update
     public FastWayItem[][] Generate()
     {
