@@ -22,8 +22,8 @@ public class MapDataCreator
     public static int MaxDistance = -1;
     
     // Start is called before the first frame update
-    public FastWayItem[][] Generate()
+    public static void Generate()
     {
-        return null;
+        // return null;
     }
 }
