@@ -2,3 +2,7 @@ GameJamDemo/Library
 GameJamDemo/Logs
 GameJamDemo/Temp
 GameJamDemo/UserSettings
+*.csproj
+GameJamDemo/obj
+GameJamDemo/.idea
+GameJamDemo/GameJamDemo.sln
