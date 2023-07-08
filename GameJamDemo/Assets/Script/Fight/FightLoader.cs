@@ -8,10 +8,10 @@ public class FightLoader : MonoBehaviour
     void Start()
     {
         new MapDataCreator().Generate();
-        MapDataCreator.FastWayItems = new MapDataCreator.FastWayItem[10][];
+        MapDataCreator.FastWayItems = new MapDataCreator.FastWayItem[1000][];
         for (int index = 0; index < MapDataCreator.FastWayItems.Length; index++)
         {
-            MapDataCreator.FastWayItems[index] = new MapDataCreator.FastWayItem[10];
+            MapDataCreator.FastWayItems[index] = new MapDataCreator.FastWayItem[1000];
             for (int offset = 0; offset < MapDataCreator.FastWayItems[index].Length; offset++)
             {
                 MapDataCreator.FastWayItems[index][offset] = new MapDataCreator.FastWayItem()
