@@ -2,17 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapDataCreator : MonoBehaviour
+public class MapDataCreator
 {
-    // Start is called before the first frame update
-    void Start()
+    public enum Item
     {
-        
+        Start,
+        End,
+        Road,
+        Barrier,
     }
-
-    // Update is called once per frame
-    void Update()
+    public class FastWayItem
     {
-        
+        public int MinCount;    //离终点最短距离
+        public MapDataCreator.Item Item;
+    }
+    // Start is called before the first frame update
+    public FastWayItem[][] Generate()
+    {
+        return null;
     }
 }
